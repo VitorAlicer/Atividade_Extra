@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FormasGeometricasTest {
 
+    @Test
     public void testQuadrado() {
         Quadrado quadrado = new Quadrado(5);
         assertEquals(25, quadrado.calcularArea(), 0.001);
@@ -35,15 +36,15 @@ class FormasGeometricasTest {
         formas.add(new Quadrado(2));
         formas.add(new Retangulo(3, 4));
         formas.add(new Triangulo(5, 6));
-        assertEquals(38, calcularAreaCombinada(formas), 0.001);
+        assertEquals(31, calcularAreaCombinada(formas), 0.001);
     }
-
-
-    public double calcularAreaCombinada(List<FormasGeometricas> formas) {
+    private double calcularAreaCombinada(List<FormasGeometricas> formas) {
         double areaTotal = 0;
         for (FormasGeometricas forma : formas) {
             areaTotal += forma.calcularArea();
         }
         return areaTotal;
     }
+
+
 }
