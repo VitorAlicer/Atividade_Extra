@@ -38,13 +38,37 @@ class FormasGeometricasTest {
         formas.add(new Triangulo(5, 6));
         assertEquals(31, calcularAreaCombinada(formas), 0.001);
     }
+
+    @Test
+    public void testCalcularAreaCombinadaComNenhumaForma() {
+        List<FormasGeometricas> formas = new ArrayList<>();
+        assertEquals(0, calcularAreaCombinada(formas), 0.001);
+    }
+
+    @Test
+    public void testCalcularAreaCombinadaComFormasVazias() {
+        List<FormasGeometricas> formas = new ArrayList<>();
+        formas.add(null);
+        formas.add(null);
+        formas.add(null);
+        assertEquals(0, calcularAreaCombinada(formas), 0.001);
+    }
+
+    @Test
+    public void testCalcularAreaCombinadaComUmaForma() {
+        List<FormasGeometricas> formas = new ArrayList<>();
+        formas.add(new Quadrado(3));
+        assertEquals(9, calcularAreaCombinada(formas), 0.001);
+    }
+
     private double calcularAreaCombinada(List<FormasGeometricas> formas) {
         double areaTotal = 0;
         for (FormasGeometricas forma : formas) {
-            areaTotal += forma.calcularArea();
+            if (forma != null) {
+                areaTotal += forma.calcularArea();
+            }
         }
         return areaTotal;
     }
-
 
 }
