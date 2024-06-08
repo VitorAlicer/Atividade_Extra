@@ -7,11 +7,11 @@ public class Quadrado extends FormasGeometricas{
         this.lado = lado;
     }
 
-    double calcularArea() {
+    public double calcularArea() {
         return lado * lado;
     }
 
-    double calcularPerimetro() {
+    public double calcularPerimetro() {
         return 4 * lado;
     }
 }

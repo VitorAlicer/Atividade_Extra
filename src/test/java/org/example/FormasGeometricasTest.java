@@ -25,9 +25,14 @@ class FormasGeometricasTest {
 
     @Test
     public void testTriangulo() {
-        Triangulo triangulo = new Triangulo(3, 4);
+        Triangulo triangulo = new Triangulo(3, 4, 5);
         assertEquals(6, triangulo.calcularArea(), 0.001);
-        assertEquals(-1, triangulo.calcularPerimetro(), 0.001);
+        assertEquals(12, triangulo.calcularPerimetro(), 0.001);
+    }
+
+    @Test
+    public void testTrianguloInvalido() {
+        new Triangulo(1, 2, 3);
     }
 
     @Test
@@ -35,8 +40,8 @@ class FormasGeometricasTest {
         List<FormasGeometricas> formas = new ArrayList<>();
         formas.add(new Quadrado(2));
         formas.add(new Retangulo(3, 4));
-        formas.add(new Triangulo(5, 6));
-        assertEquals(31, calcularAreaCombinada(formas), 0.001);
+        formas.add(new Triangulo(3, 4, 5));
+        assertEquals(24, calcularAreaCombinada(formas), 0.001);
     }
 
     @Test

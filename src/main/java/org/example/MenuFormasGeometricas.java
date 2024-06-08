@@ -62,11 +62,13 @@ public class MenuFormasGeometricas {
                 resultado = retangulo.calcularArea();
                 break;
             case 3:
-                System.out.println("Digite a base do triângulo:");
-                double baseTriangulo = Teclado.obterDouble(scanner);
-                System.out.println("Digite a altura do triângulo:");
-                double alturaTriangulo = Teclado.obterDouble(scanner);
-                Triangulo triangulo = new Triangulo(baseTriangulo, alturaTriangulo);
+                System.out.println("Digite o lado A do triângulo:");
+                double ladoATriangulo = Teclado.obterDouble(scanner);
+                System.out.println("Digite o lado B do triângulo:");
+                double ladoBTriangulo = Teclado.obterDouble(scanner);
+                System.out.println("Digite o lado C do triângulo:");
+                double ladoCTriangulo = Teclado.obterDouble(scanner);
+                Triangulo triangulo = new Triangulo(ladoATriangulo, ladoBTriangulo, ladoCTriangulo);
                 resultado = triangulo.calcularArea();
                 break;
             default:
@@ -81,6 +83,7 @@ public class MenuFormasGeometricas {
         System.out.println("Escolha a forma geométrica:");
         System.out.println("1. Quadrado");
         System.out.println("2. Retângulo");
+        System.out.println("3. Triângulo");
 
         int forma = Teclado.obterInt(scanner);
         double resultado = 0;
@@ -99,6 +102,16 @@ public class MenuFormasGeometricas {
                 double ladoBRetangulo = Teclado.obterDouble(scanner);
                 Retangulo retangulo = new Retangulo(ladoARetangulo, ladoBRetangulo);
                 resultado = retangulo.calcularPerimetro();
+                break;
+            case 3:
+                System.out.println("Digite o lado A do triângulo:");
+                double ladoATriangulo = Teclado.obterDouble(scanner);
+                System.out.println("Digite o lado B do triângulo:");
+                double ladoBTriangulo = Teclado.obterDouble(scanner);
+                System.out.println("Digite o lado C do triângulo:");
+                double ladoCTriangulo = Teclado.obterDouble(scanner);
+                Triangulo triangulo = new Triangulo(ladoATriangulo, ladoBTriangulo, ladoCTriangulo);
+                resultado = triangulo.calcularPerimetro();
                 break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");
@@ -136,11 +149,13 @@ public class MenuFormasGeometricas {
                     formas.add(new Retangulo(ladoARetangulo, ladoBRetangulo));
                     break;
                 case 3:
-                    System.out.println("Digite a base do triângulo:");
-                    double baseTriangulo = Teclado.obterDouble(scanner);
-                    System.out.println("Digite a altura do triângulo:");
-                    double alturaTriangulo = Teclado.obterDouble(scanner);
-                    formas.add(new Triangulo(baseTriangulo, alturaTriangulo));
+                    System.out.println("Digite o lado A do triângulo:");
+                    double ladoATriangulo = Teclado.obterDouble(scanner);
+                    System.out.println("Digite o lado B do triângulo:");
+                    double ladoBTriangulo = Teclado.obterDouble(scanner);
+                    System.out.println("Digite o lado C do triângulo:");
+                    double ladoCTriangulo = Teclado.obterDouble(scanner);
+                    formas.add(new Triangulo(ladoATriangulo, ladoBTriangulo, ladoCTriangulo));
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -155,7 +170,9 @@ public class MenuFormasGeometricas {
     private static double calcularAreaCombinada(List<FormasGeometricas> formas) {
         double areaTotal = 0;
         for (FormasGeometricas forma : formas) {
-            areaTotal += forma.calcularArea();
+            if (forma != null) {
+                areaTotal += forma.calcularArea();
+            }
         }
         return areaTotal;
     }

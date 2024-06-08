@@ -9,11 +9,11 @@ public class Retangulo extends FormasGeometricas {
         this.ladoB = ladoB;
     }
 
-    double calcularArea() {
+    public double calcularArea() {
         return ladoA * ladoB;
     }
 
-    double calcularPerimetro() {
+    public double calcularPerimetro() {
         return 2 * (ladoA + ladoB);
     }
 }

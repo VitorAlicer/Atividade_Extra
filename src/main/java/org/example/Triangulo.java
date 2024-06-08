@@ -2,19 +2,31 @@ package org.example;
 
 public class Triangulo extends FormasGeometricas {
 
-    private double base;
-    private double altura;
+    private double ladoA;
+    private double ladoB;
+    private double ladoC;
 
-    public Triangulo(double base, double altura) {
-        this.base = base;
-        this.altura = altura;
+    public Triangulo(double ladoA, double ladoB, double ladoC) {
+        if (!trianguloValido(ladoA,ladoB,ladoC)) {
+            throw new IllegalArgumentException("Os lados fornecidos não formam um triângulo válido.");
+        }
+        this.ladoA = ladoA;
+        this.ladoB = ladoB;
+        this.ladoC = ladoC;
     }
 
-    double calcularArea() {
-        return 0.5 * base * altura;
+    public double calcularArea() {
+        double semiPerimetro = calcularPerimetro() / 2;
+        return Math.sqrt(semiPerimetro * (semiPerimetro - ladoA) * (semiPerimetro - ladoB) * (semiPerimetro - ladoC));
     }
 
-    double calcularPerimetro() {
-        return -1;
+   public double calcularPerimetro() {
+        return ladoA + ladoB + ladoC;
     }
+
+   private boolean trianguloValido(double ladoA, double ladoB, double ladoC) {
+       return ladoA + ladoB > ladoC && ladoA + ladoC > ladoB && ladoB + ladoC > ladoA;
+   }
 }
+
+
